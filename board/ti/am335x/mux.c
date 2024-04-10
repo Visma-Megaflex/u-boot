@@ -274,6 +274,11 @@ static struct module_pin_mux uart3_icev2_pin_mux[] = {
 	{-1},
 };
 
+static struct module_pin_mux gpio3_19_pin_mux[] = {
+	{OFFSET(mcasp0_fsr), (MODE(7) | PULLUDEN | PULLUP_EN)}, /* GPIO3_19 */
+	{-1},
+};
+
 #if defined(CONFIG_NOR_BOOT)
 void enable_norboot_pin_mux(void)
 {
@@ -417,6 +422,7 @@ void enable_board_pin_mux(void)
 		configure_module_pin_mux(mmc1_pin_mux);
 #endif
 		configure_module_pin_mux(i2c2_pin_mux);
+		configure_module_pin_mux(gpio3_19_pin_mux);
 	} else if (board_is_pb()) {
 		configure_module_pin_mux(mii1_pin_mux);
 		configure_module_pin_mux(mmc0_pin_mux);

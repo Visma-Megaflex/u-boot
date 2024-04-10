@@ -680,8 +680,7 @@ int ft_board_setup(void *fdt, struct bd_info *bd)
 				printf("fixing up phy-handle for %s, old: %d, new: %d\n",
 				       alias, ret, phy_addr);
 
-				fdt_setprop_u32(fdt, phynode, "reg",
-						cpu_to_fdt32(phy_addr));
+				ret = fdt_setprop_u32(fdt, phynode, "reg", phy_addr);
 			}
 		}
 	}

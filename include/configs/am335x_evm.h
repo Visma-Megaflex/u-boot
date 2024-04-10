@@ -74,7 +74,7 @@
 #endif
 
 #define BOOT_TARGET_DEVICES(func) \
-	func(MMC, mmc, 0) \
+	func(MMC, mmc, 2) \
 	func(MMC, mmc, 1) \
 	func(NAND, nand, 0) \
 	BOOT_TARGET_USB(func) \
@@ -85,6 +85,9 @@
 
 #ifndef CONFIG_SPL_BUILD
 #include <environment/ti/dfu.h>
+
+#define GREENBOXARGS \
+	"boot_select_btn=if gpio input 72; then set devnum 0; else set devnum 1; fi\0"
 
 #define CONFIG_EXTRA_ENV_SETTINGS \
 	DEFAULT_LINUX_BOOT_ENV \
@@ -155,7 +158,8 @@
 	NANDARGS \
 	NETARGS \
 	DFUARGS \
-	BOOTENV
+	BOOTENV \
+	GREENBOXARGS
 #endif
 
 /* NS16550 Configuration */

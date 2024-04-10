@@ -125,7 +125,7 @@ u32 cpsw_mdio_get_alive(struct mii_dev *bus)
 	struct cpsw_mdio *mdio = bus->priv;
 	u32 val;
 
-	val = readl(&mdio->regs->control);
+	val = readl(&mdio->regs->alive);
 	return val & GENMASK(15, 0);
 }
 
